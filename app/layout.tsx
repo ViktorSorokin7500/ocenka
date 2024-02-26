@@ -51,7 +51,7 @@ export default function RootLayout({
 			// suppressHydrationWarning
 		>
 			<head />
-			<body>
+			<body className="max-w-[1680px] mx-auto">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
