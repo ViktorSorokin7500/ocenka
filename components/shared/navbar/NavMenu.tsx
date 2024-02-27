@@ -7,7 +7,7 @@ const session = false;
 
 const NavMenu = () => {
 	return (
-		<nav className="hidden md:flex text-white gap-4 text-lg">
+		<nav className="hidden font-inter font-semibold md:flex gap-4 text-lg">
 			<MenuLink href="/" text="Головна" />
 
 			{isCandidate ? (
@@ -23,7 +23,11 @@ const NavMenu = () => {
 			) : (
 				<MenuLink href="/" text="Увійти" />
 			)}
-			<MenuLink href="/" text="Premium" className="text-yellow-400" />
+			<MenuLink
+				href="/"
+				text="Premium"
+				className="text-blue-600 dark:text-yellow-400"
+			/>
 		</nav>
 	);
 };
