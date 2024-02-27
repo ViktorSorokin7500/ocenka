@@ -30,7 +30,7 @@ const Head = () => {
 					Знайди своє місце:
 					<br /> платформа для пошуку роботи та працівників!
 				</h1>
-				<div className="bg-red-500 relative flex items-center rounded-xl">
+				<div className="bg-red-500 dark:bg-black relative flex items-center rounded-xl">
 					<Input
 						type="text"
 						placeholder="Search anything globally..."

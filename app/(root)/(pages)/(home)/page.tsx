@@ -1,13 +1,15 @@
+import AboutUs from "@/components/home/AboutUs";
 import Head from "@/components/home/Head";
-import { ModeToggle } from "@/components/ui/toggleMode";
+import InformationSection from "@/components/home/InformationSection";
+import WorkCategories from "@/components/home/WorkCategories";
 
 export default function Home() {
 	return (
 		<>
 			<Head />
-			<div>Маленький опис</div>
-			<div>Як це працює</div>
-			<div>Робочі категорії</div>
+			<AboutUs />
+			<InformationSection />
+			<WorkCategories />
 			<div>Картки (3) топ вакансій</div>
 			<div>
 				Кількість роботодавців + кількість працівників + кількість робот

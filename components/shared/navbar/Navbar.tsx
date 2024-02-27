@@ -7,7 +7,7 @@ import BurgerMenu from "./BurgerMenu";
 
 const Navbar = () => {
 	return (
-		<header className="sticky top-0 right-0 flex justify-between items-center px-8 py-4 bg-stone-100 dark:bg-stone-800 bg-opacity-75 backdrop-filter backdrop-blur-sm">
+		<header className="sticky top-0 right-0 flex justify-between items-center px-8 py-4 bg-stone-100 dark:bg-stone-800 bg-opacity-75 backdrop-filter backdrop-blur-sm z-50">
 			<div className="flex items-center gap-4">
 				<Link
 					href="/"
@@ -21,7 +21,7 @@ const Navbar = () => {
 				<NavMenu />
 				<Image
 					title="українська"
-					src="/ukraine.png"
+					src="/assets/icons/ukraine.svg"
 					alt="flag"
 					width={42}
 					height={30}
