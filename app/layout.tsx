@@ -64,14 +64,13 @@ export default function RootLayout({
 			// suppressHydrationWarning
 		>
 			<head />
-			<body
-				className={`${inter.variable} ${spaceGrotesk.variable} max-w-[1680px] mx-auto`}>
+			<body className={`${inter.variable} ${spaceGrotesk.variable}`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange>
-					{children}
+					<div className="max-w-[1680px] mx-auto">{children}</div>
 				</ThemeProvider>
 			</body>
 		</html>

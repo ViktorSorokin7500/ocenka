@@ -13,9 +13,7 @@ interface InfoCardProps {
 const InfoCard = ({ icon, title, text, link }: InfoCardProps) => {
 	const router = useRouter();
 	return (
-		<div
-			key={title}
-			className="mx-auto bg-white dark:bg-stone-200 rounded-lg shadow-lg w-5/6">
+		<div className="mx-auto bg-white dark:bg-stone-200 rounded-lg shadow-lg w-5/6">
 			<div className="rounded-t-lg flex flex-col items-center pt-8 md:pb-2">
 				<Image src={icon} alt={title} width={48} height={48} />
 				<h3 className="text-2xl font-semibold dark:text-black">{title}</h3>

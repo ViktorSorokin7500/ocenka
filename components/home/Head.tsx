@@ -9,13 +9,6 @@ interface popularTagsProps {
 	name: string;
 }
 const Head = () => {
-	const popularTags: popularTagsProps[] = [
-		{ _id: 1, name: "Ridic" },
-		{ _id: 2, name: "Nakladak" },
-		{ _id: 3, name: "Uklizicka" },
-		{ _id: 4, name: "prodavac" },
-		{ _id: 5, name: "ostatni" },
-	];
 	return (
 		<section className="relative h-96 xl:h-[600px]">
 			<Image
@@ -30,7 +23,7 @@ const Head = () => {
 					Знайди своє місце:
 					<br /> платформа для пошуку роботи та працівників!
 				</h1>
-				<div className="bg-red-500 dark:bg-black relative flex items-center rounded-xl">
+				{/* <div className="bg-red-500 dark:bg-black relative flex items-center rounded-xl">
 					<Input
 						type="text"
 						placeholder="Search anything globally..."
@@ -39,12 +32,7 @@ const Head = () => {
 					<Button variant="destructive" type="submit">
 						Пошук
 					</Button>
-				</div>
-				<div className="flex gap-4">
-					{popularTags.map((tag) => (
-						<RenderTag key={tag._id} _id={tag._id} name={tag.name} />
-					))}
-				</div>
+				</div> */}
 			</div>
 		</section>
 	);
