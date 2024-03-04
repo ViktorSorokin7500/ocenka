@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Badge } from "../ui/badge";
 
 interface JobCardProps {
-	id: string;
+	id: number;
 	title: string;
 	desc: string;
 	type: string;

@@ -25,7 +25,7 @@ const OurStats = () => {
 			/>
 			<div className="grid grid-cols-1 md:grid-cols-3 md:w-[768px] md:mx-auto gap-4 md:gap-0 place-items-center">
 				{information.map(({ img, quantity, title }) => (
-					<StatsCard img={img} quantity={quantity} title={title} />
+					<StatsCard img={img} quantity={quantity} title={title} key={title} />
 				))}
 			</div>
 		</section>

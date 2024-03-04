@@ -7,19 +7,19 @@ const information = [
 		icon: "/assets/icons/account.svg",
 		title: "Створюй",
 		text: "Створіть особистий обліковий запис для користування сервісом.",
-		link: "/",
+		link: "/service/create-an-account",
 	},
 	{
 		icon: "/assets/icons/notebook.svg",
 		title: "Заповняй",
 		text: "Заповніть ваші дані для отримання найбільш повної інформації.",
-		link: "/",
+		link: "/service/complete-your-profile",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
 		text: "Шукайте і знаходьте, що вам потрібно.",
-		link: "/",
+		link: "/service/search",
 	},
 ];
 
