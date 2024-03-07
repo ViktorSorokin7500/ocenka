@@ -3,6 +3,7 @@ import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { cn } from "@/lib/utils";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -64,7 +65,7 @@ export default function RootLayout({
 			// suppressHydrationWarning
 		>
 			<head />
-			<body className={`${inter.variable} ${spaceGrotesk.variable} `}>
+			<body className={cn`${inter.variable} ${spaceGrotesk.variable}`}>
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="system"

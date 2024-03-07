@@ -12,25 +12,33 @@ import { BurgerLink } from "./MenuLink";
 
 const NavContent = () => {
 	const isCandidate = true;
+	const id = 1;
 	return (
 		<section className="flex flex-col gap-8 pt-16 text-center text-xl font-semibold">
 			<BurgerLink href="/" text="Головна" />
 
 			{isCandidate ? (
 				<>
-					<BurgerLink href="/" text="Вакансії" />
-					<BurgerLink href="/" text="Роботодавці" />
+					<BurgerLink href="/jobs" text="Вакансії" />
 				</>
 			) : (
-				<BurgerLink href="/" text="Працівникі" />
+				<BurgerLink href="/candidates" text="Працівникі" />
 			)}
-			<BurgerLink href="/" text="Мій профіль" />
+			{isCandidate ? (
+				<BurgerLink
+					href={`/dashboard/candidat-profile/${id}`}
+					text="Мій профіль"
+				/>
+			) : (
+				<BurgerLink href={`/dashboard/employer-profile/${id}`} text="Профіль" />
+			)}
 			<BurgerLink href="/" text="Premium" className="text-yellow-500" />
 		</section>
 	);
 };
 
 const BurgerMenu = () => {
+	const session = false;
 	return (
 		<div className="flex md:hidden">
 			<Sheet>
@@ -55,24 +63,36 @@ const BurgerMenu = () => {
 						<NavContent />
 					</SheetClose>
 
-					<div className="flex flex-col gap-3">
+					{session ? (
+						<div className="flex flex-col gap-3">
+							<SheetClose asChild>
+								<Link href="/">
+									<Button
+										className="w-full border border-black hover:bg-white"
+										variant="secondary">
+										<span>Увійти</span>
+									</Button>
+								</Link>
+							</SheetClose>
+							<SheetClose asChild>
+								<Link href="/">
+									<Button className="w-full">
+										<span>Реєстрація</span>
+									</Button>
+								</Link>
+							</SheetClose>
+						</div>
+					) : (
 						<SheetClose asChild>
 							<Link href="/">
 								<Button
-									className="w-full border border-black hover:bg-white"
+									className="w-full bg-red-600 hover:bg-red-700 text-white"
 									variant="secondary">
-									<span>Увійти</span>
+									<span>Вийти</span>
 								</Button>
 							</Link>
 						</SheetClose>
-						<SheetClose asChild>
-							<Link href="/">
-								<Button className="w-full">
-									<span>Реєстрація</span>
-								</Button>
-							</Link>
-						</SheetClose>
-					</div>
+					)}
 				</SheetContent>
 			</Sheet>
 		</div>

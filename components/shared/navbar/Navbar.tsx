@@ -7,7 +7,7 @@ import BurgerMenu from "./BurgerMenu";
 
 const Navbar = () => {
 	return (
-		<header className="sticky top-0 right-0 flex justify-between items-center px-8 py-4 bg-stone-100 dark:bg-stone-800 bg-opacity-75 backdrop-filter backdrop-blur-sm z-50">
+		<header className="sticky top-0 right-0 flex justify-between items-center px-8 py-4 bg-stone-200 dark:bg-stone-800 bg-opacity-75 backdrop-filter backdrop-blur-sm z-50">
 			<div className="flex items-center gap-4">
 				<Link
 					href="/"

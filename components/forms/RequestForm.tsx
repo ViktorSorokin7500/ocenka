@@ -33,8 +33,7 @@ const formSchema = z.object({
 				"Номер телелефону має бути виключно з цифр, довжиною менше 15 цифр",
 		})
 		.regex(/^\+\d{10,}$/, {
-			message:
-				"Номер телелефону має бути виключно з цифр, довжиною більше 8 та менше 15",
+			message: "Номер телелефону має починатись на +, бути виключно з цифр",
 		}),
 });
 
@@ -60,7 +59,7 @@ export function RequestForm() {
 					name="username"
 					render={({ field }) => (
 						<FormItem>
-							<FormLabel>Ім'я</FormLabel>
+							<FormLabel>Ім&apos;я</FormLabel>
 							<FormControl>
 								<Input placeholder="shadcn" {...field} />
 							</FormControl>

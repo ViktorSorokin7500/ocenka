@@ -2,8 +2,9 @@ import Link from "next/link";
 import React from "react";
 import { MenuLink } from "./MenuLink";
 
-const isCandidate = true;
-const session = false;
+const isCandidate = false;
+const session = true;
+const id = 1;
 
 const NavMenu = () => {
 	return (
@@ -15,10 +16,14 @@ const NavMenu = () => {
 					<MenuLink href="/jobs" text="Вакансії" />
 				</>
 			) : (
-				<MenuLink href="/" text="Працівникі" />
+				<MenuLink href="/candidates" text="Кандидати" />
 			)}
 			{session ? (
-				<MenuLink href="/" text="Профіль" />
+				isCandidate ? (
+					<MenuLink href={`/dashboard/candidat-profile/${id}`} text="Профіль" />
+				) : (
+					<MenuLink href={`/dashboard/employer-profile/${id}`} text="Профіль" />
+				)
 			) : (
 				<MenuLink href="/" text="Увійти" />
 			)}
