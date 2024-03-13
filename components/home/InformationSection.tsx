@@ -25,7 +25,7 @@ const information = [
 
 const InformationSection = () => {
 	return (
-		<section className="bg-stone-50 dark:bg-stone-600 py-8">
+		<section className="bg-stone-50 dark:bg-stone-600 py-8 space-y-4">
 			<TitleDesc
 				title="Як це працює?"
 				desc="Портал UkrainianWorkersHub допоможе вам знайти потрібні ресурси для

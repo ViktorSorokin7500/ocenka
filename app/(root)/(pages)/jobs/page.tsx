@@ -12,7 +12,7 @@ function SearchBarFallback() {
 const page = () => {
 	const firstTenJobs = jobListInfo.slice(0, 10);
 	return (
-		<section className="py-8 px-4">
+		<section className="py-8 px-4  space-y-4">
 			<Suspense fallback={<SearchBarFallback />}>
 				<TitleDesc
 					title="Свіжі вакансії"
@@ -20,13 +20,13 @@ const page = () => {
 				/>
 				<ComboxSection />
 				<div className="max-w-[1320px] mx-auto grid place-items-center grid-cols-1 xl:grid-cols-2 gap-4 ">
-					{firstTenJobs.map(({ id, title, type, city, salery }) => (
+					{firstTenJobs.map(({ id, title, type, city, salary }) => (
 						<JobListCard
 							id={id}
 							title={title}
 							type={type}
 							city={city}
-							salery={salery}
+							salary={salary}
 							key={title}
 						/>
 					))}

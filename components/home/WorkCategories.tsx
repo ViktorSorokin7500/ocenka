@@ -1,61 +1,54 @@
 import React from "react";
 import TitleDesc from "../shared/TitleDesc";
 import JobCategoriesCard from "../cards/JobCategoriesCard";
+import { VacancyCategory } from "@/types/index.d";
 
 const information = [
 	{
 		icon: "/assets/icons/search-circle.svg",
-		title: "Шукай",
-
+		title: VacancyCategory.Accommodation,
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
 	{
 		icon: "/assets/icons/search-circle.svg",
 		title: "Шукай",
-
 		link: "/",
 		desc: "(1 вакансія)",
 	},
@@ -63,7 +56,7 @@ const information = [
 
 const WorkCategories = () => {
 	return (
-		<section className="p-8 bg-blue-50 dark:bg-slate-400">
+		<section className="py-8 md:p-8 bg-blue-50 dark:bg-slate-400 space-y-4">
 			<TitleDesc
 				title="Робочі категорії"
 				desc="Почніть свій пошук, використовуючи будь-яку з наступних категорій роботи"

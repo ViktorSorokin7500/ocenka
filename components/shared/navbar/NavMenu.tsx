@@ -20,7 +20,10 @@ const NavMenu = () => {
 			)}
 			{session ? (
 				isCandidate ? (
-					<MenuLink href={`/dashboard/candidat-profile/${id}`} text="Профіль" />
+					<MenuLink
+						href={`/dashboard/candidate-profile/${id}`}
+						text="Профіль"
+					/>
 				) : (
 					<MenuLink href={`/dashboard/employer-profile/${id}`} text="Профіль" />
 				)

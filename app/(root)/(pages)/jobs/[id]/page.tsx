@@ -1,26 +1,29 @@
 "use client";
 
 import { RequestForm } from "@/components/forms/RequestForm";
+import DeleteButtonModal from "@/components/shared/DeleteButtonModal";
 import TitleDesc from "@/components/shared/TitleDesc";
+import { Button } from "@/components/ui/button";
+import { employerListInfo, jobListInfo } from "@/constants/servicesInfo";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const info = [
-	"Conduct research to make evidence-based improvements to current methods of on-campus and online leadership courses",
-	"Teach and facilitate in the leadership development programs",
-	"Assist in planning and designing curriculum for the leadership programs",
-	"Prepare guidelines and schedule for leadership sessions, activities, and small group discussions",
-	"Supervise and monitor the work and performance of participants during the training programs",
-	"Facilitate community service projects",
-	"Ensure documentation of all training related activities",
-	"Serve in the Admissions of committee of different BYLC programs",
-];
+const info = jobListInfo[0];
+const employer = employerListInfo[0];
+
+const isOwner = employer.id === 313;
 
 const page = () => {
-	const email = "berhaneselassie1945@gmail.com";
-	const phonenumber = "+380991241055";
-	const truncatedEmail = email.length > 18 ? email.slice(0, 18) + ".." : email;
+	const truncatedEmail =
+		employer.email.length > 18
+			? employer.email.slice(0, 18) + ".."
+			: employer.email;
+	const truncatedWebsite =
+		employer.website.length > 18
+			? employer.website.slice(0, 18) + ".."
+			: employer.website;
+
 	const copyToClipboard = async (text: string) => {
 		try {
 			await navigator.clipboard.writeText(text);
@@ -30,7 +33,7 @@ const page = () => {
 		}
 	};
 	return (
-		<section className="py-8">
+		<section className="py-8 space-y-4">
 			<TitleDesc
 				title="Деталі вакансії"
 				desc="повний опис вакансії, включаючи інформацію про обов'язки, вимоги до кандидатів, умови праці, компенсаційний пакет та іншу важливу інформацію"
@@ -44,25 +47,25 @@ const page = () => {
 								<div className="flex flex-col">
 									<span className="text-sm text-stone-500">Тип роботи</span>
 									<span className="text-sm text-stone-800 dark:text-stone-200">
-										Повна заннятість
+										{info.type}
 									</span>
 								</div>
 								<div className="flex flex-col">
 									<span className="text-sm text-stone-500">Категорія</span>
 									<span className="text-sm text-stone-800 dark:text-stone-200">
-										Водій
+										{info.category}
 									</span>
 								</div>
 								<div className="flex flex-col">
 									<span className="text-sm text-stone-500">Зарплатня</span>
 									<span className="text-sm text-stone-800 dark:text-stone-200">
-										125 kč/h
+										{info.salary} kč/h
 									</span>
 								</div>
 								<div className="flex flex-col">
 									<span className="text-sm text-stone-500">Опубліковано</span>
 									<span className="text-sm text-stone-800 dark:text-stone-200">
-										25-06-1992
+										{info.atDate}
 									</span>
 								</div>
 							</div>
@@ -70,19 +73,7 @@ const page = () => {
 						<div>
 							<h3 className="font-inter font-semibold text-lg">Опис роботи</h3>
 							<p className="text-stone-600 dark:text-stone-200 text-sm">
-								Lorem Ipsum is simply dummy text of the printing and typesetting
-								industry. Lorem Ipsum has been the industrys standard dummy text
-								ever since the 1500s, when an unknown printer took a galley of
-								type and scrambled it to make a type specimen book. It has
-								survived not only five centuries, but also the leap into
-								electronic typesetting, remaining essentially unchanged. It was
-								popularised in the 1960s with the release of Letraset sheets
-								containing Lorem Ipsum passages, is a long established fact that
-								a reader will be distracted by the readable content of a page
-								when looking at its layout. The point of using Lorem Ipsum is
-								that it has a more-or-less normal distribution of letters, as
-								opposed to using Content here, content here, making it look like
-								readable English.
+								{info.desc}
 							</p>
 						</div>
 						<div>
@@ -90,7 +81,7 @@ const page = () => {
 								Обов&apos;язки
 							</h3>
 							<ul className="space-y-4 text-stone-600 dark:text-stone-200 text-sm ml-2">
-								{info.map((item, i) => (
+								{info.duties?.map((item, i) => (
 									<li key={i} className="flex items-center gap-2 leading-3">
 										<Image
 											src="/assets/icons/check.svg"
@@ -107,7 +98,7 @@ const page = () => {
 						<div>
 							<h3 className="font-inter font-semibold text-lg">Бонуси</h3>
 							<ul className="space-y-4 text-stone-600 dark:text-stone-200 text-sm ml-2">
-								{info.map((item, i) => (
+								{info.bonuses?.map((item, i) => (
 									<li key={i} className="flex items-center gap-2 leading-3">
 										<Image
 											src="/assets/icons/check.svg"
@@ -130,25 +121,25 @@ const page = () => {
 							<div className="flex flex-col">
 								<span className="text-sm text-stone-500">Край</span>
 								<span className="text-sm text-stone-800 dark:text-stone-200">
-									Плзенський
+									{info.obec}
 								</span>
 							</div>
 							<div className="flex flex-col">
 								<span className="text-sm text-stone-500">Місто</span>
 								<span className="text-sm text-stone-800 dark:text-stone-200">
-									Пілзень
+									{info.city}
 								</span>
 							</div>
 							<div className="flex flex-col">
 								<span className="text-sm text-stone-500">Адреса</span>
 								<span className="text-sm text-stone-800 dark:text-stone-200">
-									Otakarova 10
+									{info.address}
 								</span>
 							</div>
 							<div className="flex flex-col">
-								<span className="text-sm text-stone-500">Адреса</span>
+								<span className="text-sm text-stone-500">Зарплатня</span>
 								<span className="text-sm text-stone-800 dark:text-stone-200">
-									125 kč/h
+									{info.salary}
 								</span>
 							</div>
 						</div>
@@ -161,8 +152,8 @@ const page = () => {
 						</h3>
 						<div className="relative w-full flex justify-center">
 							<Image
-								src="/qa-photo.jpg"
-								alt="photo"
+								src={employer.image}
+								alt={employer.companyname}
 								height={320}
 								width={320}
 								className="object-contain flex"
@@ -170,11 +161,11 @@ const page = () => {
 						</div>
 						<div className="flex flex-col gap-y-2 pt-4">
 							<h4 className="font-bold font-spaceGrotesk text-lg">
-								Tyno corporation
+								{employer.companyname}
 							</h4>
 							<div
 								className="flex gap-x-2 cursor-pointer"
-								onClick={() => copyToClipboard(phonenumber)}
+								onClick={() => copyToClipboard(employer.phonenumber)}
 								title="Копіювати">
 								<Image
 									src="/assets/icons/phone.svg"
@@ -183,11 +174,13 @@ const page = () => {
 									width={16}
 									className="object-contain"
 								/>{" "}
-								<span className="text-sm text-stone-700">{phonenumber}</span>
+								<span className="text-sm text-stone-700">
+									{employer.phonenumber}
+								</span>
 							</div>
 							<div
 								className="flex gap-x-2 cursor-pointer"
-								onClick={() => copyToClipboard(email)}
+								onClick={() => copyToClipboard(truncatedEmail)}
 								title="Копіювати">
 								<Image
 									src="/assets/icons/email.svg"
@@ -199,7 +192,7 @@ const page = () => {
 								<span className="hidden md:block text-sm text-stone-700">
 									{truncatedEmail}
 								</span>
-								<span className="md:hidden">{email}</span>
+								<span className="md:hidden">{truncatedEmail}</span>
 							</div>
 							<div className="flex gap-x-2">
 								<Image
@@ -211,17 +204,32 @@ const page = () => {
 								/>
 								<Link
 									href="https://web.dotthemes.com/html/jobslab-demo/job-single.html"
-									className="text-blue-600 underline hover:no-underline text-sm">
-									web.dotthemes.com
+									className="text-blue-600 underline hover:no-underline text-sm"
+									target="_blank">
+									{truncatedWebsite}
 								</Link>
 							</div>
 						</div>
 					</div>
 					<div className="p-2 border rounded-lg shadow-md">
-						<h3 className="font-inter font-semibold text-lg">
-							Відправити запит
-						</h3>
-						<RequestForm />
+						{isOwner ? (
+							<div className="flex flex-col gap-y-2">
+								<Button
+									title="Додати вакансію"
+									asChild
+									className="bg-blue-500 hover:bg-blue-400">
+									<Link href="/dashboard/add-vacancy">Змінити</Link>
+								</Button>
+								<DeleteButtonModal />
+							</div>
+						) : (
+							<>
+								<h3 className="font-inter font-semibold text-lg">
+									Відправити запит
+								</h3>
+								<RequestForm />
+							</>
+						)}
 					</div>
 				</div>
 			</div>

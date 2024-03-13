@@ -8,18 +8,20 @@ interface JobListCardProps {
 	title: string;
 	type: string;
 	city: string;
-	salery: number;
+	salary: string;
 }
 
-const JobListCard = ({ id, title, type, city, salery }: JobListCardProps) => {
+const JobListCard = ({ id, title, type, city, salary }: JobListCardProps) => {
 	return (
-		<div className="h-24 bg-blue-50 dark:bg-slate-400 flex sm:justify-between items-center shadow-xl px-4 sm:px-8 w-[320px] sm:w-[640px] rounded hover:scale-105 transition duration-300">
-			<div className="space-y-1">
+		<div className="py-2 md:h-24 bg-blue-50 dark:bg-slate-400 flex sm:justify-between items-center shadow-xl px-4 sm:px-8 w-[320px] sm:w-[640px] rounded hover:scale-105 transition duration-300 flex-col md:flex-row gap-2 text-center">
+			<div className="flex flex-col space-y-1">
 				<h3 className="text-lg font-inter font-bold">{title}</h3>
-				<div className="flex gap-2 items-center">
+				<div className="flex flex-col md:flex-row gap-2 items-center">
 					<Badge>{type}</Badge>
-					<span>{city}</span>
-					<span>{salery}kč/h</span>
+					<div className="flex flex-row-reverse gap-6">
+						<span>{city}</span>
+						<span>{salary}kč/h</span>
+					</div>
 				</div>
 			</div>
 			<Button asChild>

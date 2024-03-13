@@ -11,17 +11,17 @@ function SearchBarFallback() {
 const page = () => {
 	const firstTenCandidates = candidatesListInfo.slice(0, 12);
 	return (
-		<section className="py-8 px-4">
+		<section className="py-8 px-4 space-y-4">
 			<Suspense fallback={<SearchBarFallback />}>
 				<TitleDesc
 					title="Кандидати"
 					desc="Комплексний реєстр потенційних кандидатів"
 				/>
 				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 max-w-[1200px] mx-auto gap-4">
-					{firstTenCandidates.map(({ id, desc, name, surname, img }) => (
+					{firstTenCandidates.map(({ id, description, name, surname, img }) => (
 						<CandidatesList
 							id={id}
-							desc={desc}
+							desc={description}
 							name={name}
 							surname={surname}
 							img={img}

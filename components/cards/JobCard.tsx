@@ -10,8 +10,8 @@ interface JobCardProps {
 	desc: string;
 	type: string;
 	city: string;
-	atDate: Date;
-	salery: number;
+	atDate: string;
+	salary: string;
 	img: any;
 }
 
@@ -22,7 +22,7 @@ const JobCard = ({
 	type,
 	city,
 	atDate,
-	salery,
+	salary,
 	img,
 }: JobCardProps) => {
 	return (
@@ -54,7 +54,7 @@ const JobCard = ({
 				<span className="text-stone-600 line-clamp-2">{desc}</span>
 			</div>
 			<div className="bg-blue-50 group-hover:bg-blue-200 dark:bg-blue-200 dark:group-hover:bg-blue-300 py-3 flex items-center justify-around rounded-b-lg">
-				<span className="font-semibold dark:text-stone-800">{salery} kč/h</span>
+				<span className="font-semibold dark:text-stone-800">{salary} kč/h</span>
 				<Button asChild size="sm">
 					<Link href={`/jobs/${id}`}>Деталі</Link>
 				</Button>

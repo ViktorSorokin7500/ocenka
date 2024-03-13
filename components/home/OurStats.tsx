@@ -18,7 +18,7 @@ const information = [
 
 const OurStats = () => {
 	return (
-		<section className="p-8 bg-blue-50 dark:bg-slate-400">
+		<section className="p-8 bg-blue-50 dark:bg-slate-400 space-y-4">
 			<TitleDesc
 				title="Наша статистика"
 				desc="Тут перераховано статистичні дані нашого сайту і кількість людей, які шукають роботу, а також компаній, які шукають працівників."

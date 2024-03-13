@@ -26,7 +26,7 @@ const NavContent = () => {
 			)}
 			{isCandidate ? (
 				<BurgerLink
-					href={`/dashboard/candidat-profile/${id}`}
+					href={`/dashboard/candidate-profile/${id}`}
 					text="Мій профіль"
 				/>
 			) : (
