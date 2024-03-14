@@ -12,7 +12,7 @@ import React from "react";
 const info = jobListInfo[0];
 const employer = employerListInfo[0];
 
-const isOwner = employer.id === 313;
+const isOwner = employer.id === 33;
 
 const page = () => {
 	const truncatedEmail =

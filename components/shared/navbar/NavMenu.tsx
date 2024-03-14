@@ -31,7 +31,7 @@ const NavMenu = () => {
 				<MenuLink href="/" text="Увійти" />
 			)}
 			<MenuLink
-				href="/"
+				href="/premium"
 				text="Premium"
 				className="text-blue-600 dark:text-yellow-400"
 			/>

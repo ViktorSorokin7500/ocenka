@@ -32,7 +32,7 @@ const NavContent = () => {
 			) : (
 				<BurgerLink href={`/dashboard/employer-profile/${id}`} text="Профіль" />
 			)}
-			<BurgerLink href="/" text="Premium" className="text-yellow-500" />
+			<BurgerLink href="/premium" text="Premium" className="text-yellow-500" />
 		</section>
 	);
 };

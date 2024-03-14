@@ -10,6 +10,7 @@ import {
 	SelectValue,
 } from "@/components/ui/select";
 import { jobListInfo } from "@/constants/servicesInfo";
+import { createVacancy } from "@/lib/actions/vacancy.action";
 import {
 	Vacancy,
 	VacancyCategory,
@@ -38,6 +39,7 @@ const initialVacancy: Vacancy = {
 };
 
 const vacancy = jobListInfo[90] as Vacancy;
+const type = "edit";
 
 const ExperienceForm = () => {
 	const sessionId = 1;
@@ -107,10 +109,15 @@ const ExperienceForm = () => {
 		setVacancyInfo(updatedBonusInfo);
 	};
 
-	const handleSubmit = () => {
+	async function onSubmit() {
 		console.log(vacancyInfo.bonuses);
+		try {
+			await createVacancy({});
+		} catch (error) {
+			console.log(error);
+		}
 		// router.push(`/dashboard/employer-profile/${vacancy.id}`);
-	};
+	}
 
 	return (
 		<section className="mx-2 md:mx-16 py-6 md:py-8 space-y-6 md:space-y-8">
@@ -358,7 +365,7 @@ const ExperienceForm = () => {
 					</Link>
 				</Button>
 				<Button
-					onClick={handleSubmit}
+					onClick={onSubmit}
 					className="dark:bg-stone-400 dark:hover:bg-stone-300">
 					Зберігти
 				</Button>
