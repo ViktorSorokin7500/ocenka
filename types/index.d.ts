@@ -15,8 +15,8 @@ export interface Vacancy {
 
 export enum VacancyType {
 	Choose = "Всі",
-	OneTime = "Одноразовая",
-	Partial = "Частичная",
+	OneTime = "Одноразова",
+	Partial = "Часткова",
 	Full = "Повна",
 }
 
