@@ -13,20 +13,13 @@ import {
 	FormLabel,
 	FormMessage,
 } from "@/components/ui/form";
-import {
-	Select,
-	SelectContent,
-	SelectItem,
-	SelectTrigger,
-	SelectValue,
-} from "@/components/ui/select";
+
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/components/ui/use-toast";
 import { signInSchema } from "@/lib/validation";
 import Link from "next/link";
-import { RegistrationInfo } from "@/types/index.d";
-import axios from "axios";
 import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
 
 const SignIn = () => {
 	const { toast } = useToast();
@@ -37,25 +30,26 @@ const SignIn = () => {
 		defaultValues: {
 			email: "",
 			password: "",
-			role: "candidate",
 		},
 	});
 
 	async function onSubmit(values: z.infer<typeof signInSchema>) {
 		try {
-			const response = await axios.post("/api/users/sign-in", values);
-			toast({
-				variant: "success",
-				description: response.data.message,
-				duration: 1500,
-			}),
-				setTimeout(() => {
-					router.push("/");
-				}, 1500);
+			const res = await signIn("credentials", {
+				email: values.email,
+				password: values.password,
+				redirect: false,
+			});
+			if (res?.error) {
+				throw new Error("Неверный эмеил или пароль");
+			}
+			router.push("/");
+			console.log(res);
 		} catch (error: any) {
+			console.log(error);
 			toast({
 				variant: "destructive",
-				description: error.response.data.message || "Щось сталось...",
+				description: "Неверный эмеил или пароль",
 			});
 		}
 	}
@@ -91,38 +85,6 @@ const SignIn = () => {
 							</FormItem>
 						)}
 					/>
-					{/* <FormField
-						control={form.control}
-						name="role"
-						render={({ field }) => (
-							<FormItem className="flex flex-col gap">
-								<FormLabel className="font-bold">Увійти як:</FormLabel>
-								<FormControl>
-									<Select
-										onValueChange={(value) => field.onChange(value)}
-										value={field.value}>
-										<SelectTrigger>
-											<SelectValue placeholder="Candidate">
-												<span className="capitalize">{field.value}</span>
-											</SelectValue>
-										</SelectTrigger>
-										<SelectContent>
-											{Object.values(RegistrationInfo).map((type) => (
-												<SelectItem
-													key={type}
-													className="cursor-pointer hover:bg-stone-50 dark:hover:bg-stone-500"
-													value={type}>
-													<span className="capitalize">{type}</span>
-												</SelectItem>
-											))}
-										</SelectContent>
-									</Select>
-								</FormControl>
-
-								<FormMessage className="text-sm" />
-							</FormItem>
-						)}
-					/> */}
 					<div className="grid">
 						<Button type="submit">Submit</Button>
 					</div>

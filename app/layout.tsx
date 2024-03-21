@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import { Providers } from "@/components/Providers";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -67,14 +68,16 @@ export default function RootLayout({
 		>
 			<head />
 			<body className={cn`${inter.variable} ${spaceGrotesk.variable}`}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange>
-					<div className="mx-auto">{children}</div>
-					<Toaster />
-				</ThemeProvider>
+				<Providers>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange>
+						{children}
+						<Toaster />
+					</ThemeProvider>
+				</Providers>
 			</body>
 		</html>
 	);

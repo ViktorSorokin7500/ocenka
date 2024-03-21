@@ -24,7 +24,6 @@ import {
 } from "@/components/ui/select";
 import { RegistrationInfo } from "@/types/index.d";
 import Link from "next/link";
-import axios from "axios";
 import { useToast } from "@/components/ui/use-toast";
 import { useRouter } from "next/navigation";
 
@@ -44,22 +43,28 @@ const SignUp = () => {
 
 	async function onSubmit(values: z.infer<typeof signUpSchema>) {
 		try {
-			const response = await axios.post("/api/users/sign-up", values);
-			toast({
-				variant: "success",
-				description: response.data.message,
-				duration: 3000,
-			}),
-				setTimeout(() => {
-					router.push("/");
-				}, 3000);
+			const res = await fetch("/api/register", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(values),
+			});
+			if (res.ok) {
+				toast({
+					variant: "success",
+					description: "user registered",
+					duration: 3000,
+				}),
+					setTimeout(() => {
+						router.push("/sign-in");
+					}, 3000);
+			}
 		} catch (error: any) {
 			toast({
 				variant: "destructive",
 				description:
 					error.response.data.message || "Something went wrong. Try again!",
 			});
-			console.log(error);
+			console.log("signUp =>", error);
 		}
 	}
 

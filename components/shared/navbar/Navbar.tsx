@@ -1,11 +1,15 @@
+"use client";
 import { ModeToggle } from "@/components/ui/toggleMode";
 import Image from "next/image";
 import React from "react";
 import NavMenu from "./NavMenu";
 import Link from "next/link";
 import BurgerMenu from "./BurgerMenu";
+import { useSession } from "next-auth/react";
 
 const Navbar = () => {
+	const session = useSession();
+	console.log("session", session);
 	return (
 		<header className="sticky top-0 right-0 flex justify-between items-center px-8 py-4 bg-stone-200 dark:bg-stone-800 bg-opacity-75 backdrop-filter backdrop-blur-sm z-50">
 			<div className="flex items-center gap-4">

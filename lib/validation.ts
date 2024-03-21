@@ -128,7 +128,6 @@ export const signInSchema = z.object({
 	password: z.string().min(2, {
 		message: "Email must be at least 2 characters.",
 	}),
-	role: z.enum(["candidate", "employer"]),
 });
 
 export const signUpSchema = z.object({
