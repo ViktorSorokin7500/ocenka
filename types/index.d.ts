@@ -13,6 +13,11 @@ export interface Vacancy {
 	bonuses: string[];
 }
 
+export enum RegistrationInfo {
+	Candidate = "candidate",
+	Employer = "employer",
+}
+
 export enum VacancyType {
 	Choose = "Всі",
 	OneTime = "Одноразова",
@@ -61,4 +66,10 @@ export enum VacancyLanguage {
 	Low = "Початковий",
 	Medium = "Комунікативний",
 	High = "Розмовний",
+}
+
+export interface CreateUserParams {
+	email: string;
+	password: string;
+	role: string;
 }

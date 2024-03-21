@@ -1,6 +1,6 @@
 "use client";
 
-import { RequestForm } from "@/components/forms/RequestForm";
+import { EmployerForm } from "@/components/forms/EmployerForm";
 import DeleteButtonModal from "@/components/shared/DeleteButtonModal";
 import TitleDesc from "@/components/shared/TitleDesc";
 import { Button } from "@/components/ui/button";
@@ -227,7 +227,7 @@ const page = () => {
 								<h3 className="font-inter font-semibold text-lg">
 									Відправити запит
 								</h3>
-								<RequestForm />
+								<EmployerForm />
 							</>
 						)}
 					</div>

@@ -61,7 +61,7 @@ const WorkCategories = () => {
 				title="Робочі категорії"
 				desc="Почніть свій пошук, використовуючи будь-яку з наступних категорій роботи"
 			/>
-			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+			<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-screen-xl mx-auto">
 				{information.map(({ icon, title, link, desc }, i) => (
 					<JobCategoriesCard
 						icon={icon}

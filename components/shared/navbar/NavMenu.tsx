@@ -3,7 +3,7 @@ import React from "react";
 import { MenuLink } from "./MenuLink";
 
 const isCandidate = false;
-const session = true;
+const session = false;
 const id = 1;
 
 const NavMenu = () => {
@@ -28,7 +28,7 @@ const NavMenu = () => {
 					<MenuLink href={`/dashboard/employer-profile/${id}`} text="Профіль" />
 				)
 			) : (
-				<MenuLink href="/" text="Увійти" />
+				<MenuLink href="/sign-in" text="Увійти" />
 			)}
 			<MenuLink
 				href="/premium"

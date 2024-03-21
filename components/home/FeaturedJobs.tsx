@@ -12,7 +12,7 @@ const FeaturedJobs = () => {
 				title="Рекомендовані вакансії"
 				desc="Рекомендовані вакансії, доступні на ukrainianworkershub.cz."
 			/>
-			<div className="px-6 lg:px-24 xl:px-48 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+			<div className="px-6 lg:px-24 xl:px-48 grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-screen-2xl mx-auto">
 				{jobListInfo.map(
 					({ id, title, desc, type, city, atDate, salary, img }) => (
 						<JobCard

@@ -72,7 +72,7 @@ export default function RootLayout({
 					defaultTheme="system"
 					enableSystem
 					disableTransitionOnChange>
-					<div className="max-w-screen-2xl mx-auto">{children}</div>
+					<div className="mx-auto">{children}</div>
 					<Toaster />
 				</ThemeProvider>
 			</body>

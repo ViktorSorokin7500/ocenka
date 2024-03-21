@@ -32,7 +32,7 @@ const InformationSection = () => {
 					досягнення ваших кар'єрних цілей або знайти кваліфікованих кандидатів."
 			/>
 
-			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0">
+			<div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-0 max-w-screen-xl mx-auto">
 				{information.map(({ icon, title, text, link }) => (
 					<InfoCard
 						icon={icon}

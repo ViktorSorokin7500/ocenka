@@ -63,3 +63,83 @@ export const VacancySchema = z.object({
 		)
 		.min(1, { message: "Графа бонуси не можуть бути порожніми" }),
 });
+
+export const EmployerSchema = z.object({
+	username: z
+		.string()
+		.min(2, {
+			message: "І'мя повино бути більше двох символів",
+		})
+		.regex(/^[a-zA-Z]+$/, { message: "Використовуйте лише латинські літери" }),
+	email: z.string().email({ message: "Введіть свою пошту" }),
+	phonenumber: z
+		.string()
+		.min(8, {
+			message: "Номер телелефону має бути довжиною більше 8 цифр",
+		})
+		.max(15, {
+			message:
+				"Номер телелефону має бути виключно з цифр, довжиною менше 15 цифр",
+		})
+		.regex(/^\+\d{10,}$/, {
+			message: "Номер телелефону має починатись на +, бути виключно з цифр",
+		}),
+});
+
+export const CandidateSchema = z.object({
+	name: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	surname: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	description: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	city: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	phonenumber: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	skills: z.array(
+		z.object({
+			vacancy: z.string(),
+			startDate: z.string(),
+			endDate: z.string(),
+		})
+	),
+	mainJob: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	languageSkill: z.enum(["Всі", "Початковий", "Комунікативний", "Розмовний"]),
+	salary: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+	age: z.string().min(3, {
+		message: "Title min 3 characters",
+	}),
+});
+
+export const signInSchema = z.object({
+	email: z.string().min(2, {
+		message: "Email must be at least 2 characters.",
+	}),
+	password: z.string().min(2, {
+		message: "Email must be at least 2 characters.",
+	}),
+	role: z.enum(["candidate", "employer"]),
+});
+
+export const signUpSchema = z.object({
+	name: z.string().min(2, {
+		message: "Email must be at least 2 characters.",
+	}),
+	email: z.string().min(2, {
+		message: "Email must be at least 2 characters.",
+	}),
+	password: z.string().min(2, {
+		message: "Email must be at least 2 characters.",
+	}),
+	role: z.enum(["candidate", "employer"]),
+});
