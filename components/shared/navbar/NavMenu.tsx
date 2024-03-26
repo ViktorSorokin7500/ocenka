@@ -1,17 +1,16 @@
-import Link from "next/link";
-import React from "react";
+import { useInfoId, useInfoRole, useInfoSession } from "@/constants/formulas";
 import { MenuLink } from "./MenuLink";
 
-const isCandidate = false;
-const session = false;
-const id = 1;
-
 const NavMenu = () => {
+	const session = useInfoSession();
+	const role = useInfoRole();
+	const id = useInfoId();
+
 	return (
 		<nav className="hidden font-inter font-semibold md:flex gap-4 text-lg">
 			<MenuLink href="/" text="Головна" />
 
-			{isCandidate ? (
+			{role === "candidate" ? (
 				<>
 					<MenuLink href="/jobs" text="Вакансії" />
 				</>
@@ -19,7 +18,7 @@ const NavMenu = () => {
 				<MenuLink href="/candidates" text="Кандидати" />
 			)}
 			{session ? (
-				isCandidate ? (
+				role === "candidate" ? (
 					<MenuLink
 						href={`/dashboard/candidate-profile/${id}`}
 						text="Профіль"

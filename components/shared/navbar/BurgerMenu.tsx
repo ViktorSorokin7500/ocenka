@@ -9,22 +9,24 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { BurgerLink } from "./MenuLink";
+import { useInfoId, useInfoRole, useInfoSession } from "@/constants/formulas";
+import EscapeButton from "./EscapeButton";
 
 const NavContent = () => {
-	const isCandidate = true;
-	const id = 1;
+	const role = useInfoRole();
+	const id = useInfoId();
 	return (
 		<section className="flex flex-col gap-8 pt-16 text-center text-xl font-semibold">
 			<BurgerLink href="/" text="Головна" />
 
-			{isCandidate ? (
+			{role === "candidate" ? (
 				<>
 					<BurgerLink href="/jobs" text="Вакансії" />
 				</>
 			) : (
 				<BurgerLink href="/candidates" text="Працівникі" />
 			)}
-			{isCandidate ? (
+			{role === "candidate" ? (
 				<BurgerLink
 					href={`/dashboard/candidate-profile/${id}`}
 					text="Мій профіль"
@@ -38,7 +40,8 @@ const NavContent = () => {
 };
 
 const BurgerMenu = () => {
-	const session = false;
+	const session = useInfoSession();
+
 	return (
 		<div className="flex md:hidden">
 			<Sheet>
@@ -64,9 +67,15 @@ const BurgerMenu = () => {
 					</SheetClose>
 
 					{session ? (
+						<SheetClose asChild>
+							<Link href="/">
+								<EscapeButton />
+							</Link>
+						</SheetClose>
+					) : (
 						<div className="flex flex-col gap-3">
 							<SheetClose asChild>
-								<Link href="/">
+								<Link href="/sign-in">
 									<Button
 										className="w-full border border-black hover:bg-white"
 										variant="secondary">
@@ -75,23 +84,13 @@ const BurgerMenu = () => {
 								</Link>
 							</SheetClose>
 							<SheetClose asChild>
-								<Link href="/">
+								<Link href="/sign-up">
 									<Button className="w-full">
 										<span>Реєстрація</span>
 									</Button>
 								</Link>
 							</SheetClose>
 						</div>
-					) : (
-						<SheetClose asChild>
-							<Link href="/">
-								<Button
-									className="w-full bg-red-600 hover:bg-red-700 text-white"
-									variant="secondary">
-									<span>Вийти</span>
-								</Button>
-							</Link>
-						</SheetClose>
 					)}
 				</SheetContent>
 			</Sheet>

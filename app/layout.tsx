@@ -5,6 +5,7 @@ import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
+import ReduxProvider from "@/components/LayoutProvider";
 
 const inter = Inter({
 	subsets: ["latin"],
@@ -67,14 +68,16 @@ export default function RootLayout({
 		>
 			<head />
 			<body className={cn`${inter.variable} ${spaceGrotesk.variable}`}>
-				<ThemeProvider
-					attribute="class"
-					defaultTheme="system"
-					enableSystem
-					disableTransitionOnChange>
-					<div className="mx-auto">{children}</div>
-					<Toaster />
-				</ThemeProvider>
+				<ReduxProvider>
+					<ThemeProvider
+						attribute="class"
+						defaultTheme="system"
+						enableSystem
+						disableTransitionOnChange>
+						<div className="mx-auto">{children}</div>
+						<Toaster />
+					</ThemeProvider>
+				</ReduxProvider>
 			</body>
 		</html>
 	);
