@@ -1,3 +1,4 @@
+"use client";
 import TitleDesc from "@/components/shared/TitleDesc";
 import { Button } from "@/components/ui/button";
 import { employerListInfo, jobListInfo } from "@/constants/servicesInfo";
@@ -6,11 +7,13 @@ import Link from "next/link";
 import React from "react";
 import DeleteButtonModal from "@/components/shared/DeleteButtonModal";
 import JobListCard from "@/components/cards/JobListCard";
+import { useInfoId } from "@/constants/formulas";
 
 const employer = employerListInfo[0];
 const info = jobListInfo;
 
-const page = () => {
+const Page = () => {
+	const userId = useInfoId();
 	return (
 		<section className="py-2 md:py-16 space-y-2">
 			<TitleDesc
@@ -48,9 +51,9 @@ const page = () => {
 			</div>
 			<div className="flex flex-col gap-4 justify-center items-center pt-4">
 				<h3 className="text-2xl font-bold">Мої пропозиції</h3>
-				{info?.map(({ id, title, type, city, salary }) => (
+				{info?.map(({ id, title, type, city, salary }, i) => (
 					<JobListCard
-						key={title}
+						key={i}
 						id={id}
 						title={title}
 						type={type}
@@ -69,7 +72,7 @@ const page = () => {
 					</Link>
 				</Button>
 				<Button title="Змінити профіль" asChild>
-					<Link href={`/dashboard/edit-profile/${employer.id}`}>Змінити</Link>
+					<Link href={`/dashboard/edit-profile/${userId}`}>Змінити</Link>
 				</Button>
 				<DeleteButtonModal />
 			</div>
@@ -77,4 +80,4 @@ const page = () => {
 	);
 };
 
-export default page;
+export default Page;

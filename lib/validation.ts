@@ -65,13 +65,21 @@ export const VacancySchema = z.object({
 });
 
 export const EmployerSchema = z.object({
-	username: z
+	id: z.any(),
+	role: z.string(),
+	name: z
 		.string()
 		.min(2, {
 			message: "І'мя повино бути більше двох символів",
 		})
 		.regex(/^[a-zA-Z]+$/, { message: "Використовуйте лише латинські літери" }),
 	email: z.string().email({ message: "Введіть свою пошту" }),
+	website: z
+		.string()
+		.min(2, {
+			message: "І'мя повино бути більше двох символів",
+		})
+		.regex(/^[a-zA-Z]+$/, { message: "Використовуйте лише латинські літери" }),
 	phonenumber: z
 		.string()
 		.min(8, {
